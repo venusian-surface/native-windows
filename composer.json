@@ -1,6 +1,6 @@
 {
-    "name": "tubes/windows",
-    "description": "The Tubes Windows component (WindowManager / WindowHandler / OS window factory).",
+    "name": "surface/native-windows",
+    "description": "Surface native OS windows: windows, menu profiles, conjured views and components over the OS bridge.",
     "license": "MIT",
     "authors": [
         {
@@ -8,30 +8,43 @@
             "email": "angel@projectsaturnstudios.com"
         }
     ],
-    "homepage": "https://scrapyard-io.projectsaturnstudios.com/ecosystem/scrapyard-io/tubes/0.7.x/windows",
-    "support": {
-        "issues": "https://github.com/scrapyard-io/tubes/issues",
-        "source": "https://github.com/scrapyard-io/tubes"
-    },
     "require": {
         "php": "^8.4|^8.5|^8.6",
-        "fabricate/nuts-and-bolts": "^0.7.0",
-        "tubes/contracts": "^0.7.0"
+        "psr/container": "^1.1.1 || ^2.0.1",
+        "surface/bridge": "^0.8.0",
+        "surface/contracts": "^0.8.0",
+        "surface/drawing": "^0.8.0",
+        "venusian-voyager/contracts": "^0.8.0",
+        "venusian-voyager/magic-aliases": "^0.8.0",
+        "venusian-voyager/nuts-and-bolts": "^0.8.0"
+    },
+    "suggest": {
+        "jovian/venusian-appkit": "^0.8.0 - To build apps that use MacOS Windows using AppKit",
+        "jovian/venusian-gtk": "^0.8.0 - To build apps that use Linux Windows using GTK."
     },
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "ScrapyardIO\\Tubes\\Windows\\": ""
-        }
+            "Surface\\NativeWindows\\": ""
+        },
+        "files": [
+            "Helpers/os.php"
+        ]
     },
     "config": {
         "sort-packages": true
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.7.x-dev",
-            "dev-main": "0.7.x-dev",
-            "dev-0.7.x": "0.7.x-dev"
+            "dev-main": "0.8.x-dev"
+        },
+        "venusian": {
+            "providers": [
+                "Surface\\NativeWindows\\NativeWindowsServiceProvider"
+            ],
+            "aliases": {
+                "NativeWindow": "Surface\\NativeWindows\\MagicAliases\\NativeWindow"
+            }
         }
     }
 }
